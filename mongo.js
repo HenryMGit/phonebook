@@ -6,16 +6,6 @@ if(process.argv.length < 3){
 }
 
 const password = process.argv[2]
-const url = `mongodb+srv://fullstack:${password}@cluster0.6ecea.mongodb.net/phonebook-app?retryWrites=true&w=majority`
-
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology:true, useFindAndModify:false, useCreateIndex: true})
-
-const personSchema = new mongoose.Schema({
-    name: String,
-    number: String,
-})
-
-const Person = mongoose.model('Person', personSchema)
 
 if(process.argv.length < 4){
     console.log('phonebook:')
