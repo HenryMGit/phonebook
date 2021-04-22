@@ -39,7 +39,7 @@ app.get('/info', (req,res,next) => {
     let date =  new Date()
     Person.count({})
         .then(count => res.send(`Phonebook has info for ${count} people <br /> ${date}`) )
-        .catch(err => next(error))
+        .catch(error => next(error))
 })
 
 app.delete('/api/persons/:id', (req, res, next) => {
