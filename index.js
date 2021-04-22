@@ -20,7 +20,7 @@ morgan.token('person',(req) =>{
 })
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :person'))
 
-app.get('/api/persons', (req, res, next)=>{
+app.get('/api/persons', (req, res)=>{
     Person.find({}).then(persons => res.json(persons))
 })
 
@@ -51,13 +51,13 @@ app.delete('/api/persons/:id', (req, res, next) => {
 app.post('/api/persons', (req, res, next) =>{
     const body = req.body
 
-   const person = new Person({
-       name: body.name,
-       number: body.number
-   })
-   person.save()
-    .then(savedPerson => res.json(savedPerson))
-    .catch(error => next(error))
+    const person = new Person({
+        name: body.name,
+        number: body.number
+    })
+    person.save()
+        .then(savedPerson => res.json(savedPerson))
+        .catch(error => next(error))
 })
 
 app.put('/api/persons/:id', (req, res, next) =>{
